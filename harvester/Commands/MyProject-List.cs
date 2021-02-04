@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 namespace Devisioona.Harvest.CLI.Commands {
 	public static class MyProject_List {
 		public static Command GetCommand() {
-			var show = new Command("list", "List projects")
+			var cmd = new Command("list", "List projects")
 			{
 				new Option<string>(new string[] {"--search", "-s" }, "Search for substrings")
 			};
 
-			show.Handler = CommandHandler.Create<string, bool>(Execute);
+			cmd.Handler = CommandHandler.Create<string, bool>(Execute);
 
-			return show;
+			return cmd;
 		}
 
 		private static async Task Execute(string search, bool outputJson) {

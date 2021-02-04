@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Devisioona.Harvest.CLI.Commands {
 	public static class Timer_Start {
 		public static Command GetCommand() {
-			var id = new Option<long>(new string[] { "--id", "-id" }, "ID of time entry to base this upon");
+			var id = new Option<long>(new string[] { "-id" }, "ID of time entry to base this upon");
 			var project = new Option<long>(new string[] { "--projectId", "-p" }, "Project id of entry");
 			var task = new Option<long>(new string[] { "--taskId", "-t" }, "Task id of entry");
 			var notes = new Option<string>(new string[] { "--notes", "-n" }, "Notes of time entry");

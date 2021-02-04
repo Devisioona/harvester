@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Devisioona.Harvest.CLI.Commands {
 	public static class TimeEntry_Copy {
 		public static Command GetCommand() {
-			var id = new Option<long>(new string[] { "--id", "-id" }, "ID of time entry");
+			var id = new Option<long>(new string[] { "-id" }, "ID of time entry");
 			var timerange = new Option<string>(new string[] { "--timerange", "-t" }, "Time range to use (today, thisweek, lastweek, thismonth, lastmonth)");
 			var search = new Option<string>(new string[] { "--search", "-s" }, "Search for substring in client/project/task/notes");
 			var hour = new Option<decimal>(new string[] { "--hours", "-h" }, "Override duration (hours) of copied entry");

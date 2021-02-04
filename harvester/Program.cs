@@ -36,8 +36,8 @@ namespace Devisioona.Harvest.CLI
 		{
 			var rootCommand = new RootCommand("Harvest API Command Line Interface")
 			{
-				CreateClientCommand(),
-				CreateProjectCommand(),
+				//CreateClientCommand(),
+				//CreateProjectCommand(),
 				CreateMyProjectCommand(),
 				CreateTimeEntryCommand(),
 				CreateTimerCommand(),
@@ -57,11 +57,6 @@ namespace Devisioona.Harvest.CLI
 			};
 			cmd.AddAlias("cli");
 
-			cmd.Handler = CommandHandler.Create(() =>
-			{
-				Console.WriteLine("Specify subcommand");
-			});
-
 			return cmd;
 		}
 
@@ -71,11 +66,6 @@ namespace Devisioona.Harvest.CLI
 				Timer_Start.GetCommand(),
 				Timer_Continue.GetCommand(),
 			};
-
-			cmd.Handler = CommandHandler.Create(() =>
-			{
-				Console.WriteLine("Specify subcommand");
-			});
 
 			return cmd;
 		}
@@ -87,11 +77,6 @@ namespace Devisioona.Harvest.CLI
 			};
 			cmd.AddAlias("proj");
 
-			cmd.Handler = CommandHandler.Create(() =>
-			{
-				Console.WriteLine("Specify subcommand");
-			});
-
 			return cmd;
 		}
 
@@ -101,12 +86,7 @@ namespace Devisioona.Harvest.CLI
 			var cmd = new Command("my-project", "My project assignment listing") {
 				MyProject_List.GetCommand(),
 			};
-			cmd.AddAlias("myp");
-
-			cmd.Handler = CommandHandler.Create(() =>
-			{
-				Console.WriteLine("Specify subcommand");
-			});
+			cmd.AddAlias("my");
 
 			return cmd;
 		}
@@ -122,11 +102,6 @@ namespace Devisioona.Harvest.CLI
 				TimeEntry_Copy.GetCommand(),
 			};
 			cmd.AddAlias("te");
-
-			cmd.Handler = CommandHandler.Create(() =>
-			{
-				Console.WriteLine("Specify subcommand");
-			});
 
 			return cmd;
 		}

@@ -2,6 +2,7 @@
 Harvester
 ============================================================================
 
+
 1. Installation
 
 You will need a Harvest API key to use this app. You will need to update the
@@ -24,9 +25,193 @@ You can use h if you want to.
 
 2. Usage
 
+
+
 2.1 Who are you?
 
 Check if harvester is working by running 
 >harvester me
 
-This will tell you who you are. 
+This will tell you who you are.
+
+
+
+2.2 What have I done today?
+
+List your hours with the 'timeentry list' command:
+
+> harvester timeentry list
+> harvester te ls
+
+You can also specify the timerange.
+
+> harvester te ls -t today
+
+Where timerange can be:
+
+* today
+* yesterday
+* thisweek
+* lastweek
+* thismonth
+* lastmonth
+* last7days
+* last30days
+
+To include the sum of the hours, add --summary
+
+> harvester te ls -t thisweek --summary
+
+You can also search for entries, searching client, project, task or notes.
+
+> harvester te ls --search Azure
+> harvester te ls -s Azure
+
+See all options with the --help command:
+
+> harvester timeentry list --help
+> harvester te ls --help
+
+
+
+2.3 My Projects
+
+You can query all projects you are currently assigned:
+
+> harvester my-project list
+> harvester my list
+
+You can also search this list:
+
+> harvest my list --search Azure
+
+The list contains all the IDs for the clients, projects and tasks. You can use these IDs
+when creating entries or starting timers.
+
+
+
+2.4 Creating a time entry
+
+> harvester timeentry create --projectId 1234 --taskId 2345 --hours 1.5
+> harvester timeentry create -p 1234 -t 2345 -h 1.5
+
+With notes:
+
+> harvester timeentry create -p 1234 -t 2345 -h 1.5 --notes "Added some comments"
+> harvester timeentry create -p 1234 -t 2345 -h 1.5 -n "Added some comments"
+
+
+
+2.5 Creating a time entry interactively
+
+> harvester timeentry interactive
+> harvester te ia
+
+
+
+2.6 Updating a time entry
+
+> harvester timeentry update -id 1234
+
+Add the following parameters to update that aspect:
+
+  -n, --notes <notes>            Notes of time entry
+  -p, --projectId <projectId>    Project id of entry
+  -t, --taskId <taskId>          Task id of entry
+  -h, --hours <hours>            Duration (hours) of entry (1.75)
+
+
+2.7 Copy a time entry
+
+Specify entry:
+
+> harvester timeentry copy -id 1234
+
+Otherwise, harvester will ask.
+
+> harvester timeentry copy
+> harvester te cp
+
+You can refine that it asks with search:
+
+> harvest te cp --search "Azure Functions"
+
+You can override hours or notes:
+
+  -n, --notes    Override notes
+  -h, --hours    Override hours
+
+Or specify the time range to search for:
+
+  -t, --timerange
+
+See the list command for valid ranges.
+
+
+
+3. Timer functionality
+
+Harvester can also time your entries, regardless if Harvest is set up like that.
+
+
+
+3.1 Start a timer
+
+You need to tell harvester, what to base the timing on. You can use an existing
+entry as the base:
+
+> harvester timer start -id 1234
+
+Or you can specify the project id and task id:
+
+> harvester timer start --projectId 1234 --taskId 2345
+> harvester timer start -p 1234 -t 2345
+
+Or ask that harvester asks you for these information interactively by showing
+information from your assigned projects:
+
+> harvester timer start --interactive
+> harvester timer start -ia
+
+One the timer is running, press ESC to quit and save your time. Times are rounded
+to the next quater hour.
+
+
+
+3.2 Adding notes
+
+You can add notes to your timed task by adding them as parameters:
+
+> harvester timer start -ia --notes "Did something cool today"
+> harvester timer start -ia -n "Did something cool today"
+
+
+
+3.3 Continue a timer
+
+You can also continue a task by timing it with the continue command.
+Either specify the ID of the task:
+
+> harvester timer continnue -id 1234
+
+Or just simply let harvester show you the tasks you had today, and choose
+the one to continue.
+
+> harvester timer conitnue
+
+
+
+4. JSON
+
+Many commands can output JSON. Just add the -oj parameter, --output-json.
+
+Show text / parsed:
+
+> harvester my list
+
+Show JSON:
+
+> harvester my list -oj
+
+
+

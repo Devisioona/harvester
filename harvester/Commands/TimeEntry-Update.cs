@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Devisioona.Harvest.CLI.Commands {
 	public static class TimeEntry_Update {
 		public static Command GetCommand() {
-			var id = new Option<string>(new string[] { "--id", "-id" }, "ID of time entry") { IsRequired = true };
+			var id = new Option<string>(new string[] { "-id" }, "ID of time entry") { IsRequired = true };
 			var notes = new Option<string>(new string[] { "--notes", "-n" }, "Notes of time entry");
 			var project = new Option<long>(new string[] { "--projectId", "-p" }, "Project id of entry");
 			var task = new Option<long>(new string[] { "--taskId", "-t" }, "Task id of entry");

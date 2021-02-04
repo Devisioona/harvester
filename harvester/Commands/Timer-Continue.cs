@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Devisioona.Harvest.CLI.Commands {
 	public static class Timer_Continue {
 		public static Command GetCommand() {
-			var id = new Option<long>(new string[] { "--id", "-id" }, "Id of time entry to continue");
+			var id = new Option<long>(new string[] { "-id" }, "Id of time entry to continue");
 
 			var cmd = new Command("continue", "Continue working on a task")
 			{
