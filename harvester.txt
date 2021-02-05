@@ -9,8 +9,10 @@ You will need a Harvest API key to use this app. You will need to update the
 API key into appsettings.json. 
 
   o Login to Harvest
-  o Go to the Harvest profile page: https://id.getharvest.com/profile
-  o Select Developers from the top right side (or use direct link https://id.getharvest.com/developers)
+  o Either
+    o Go to the Edit Your Harvest ID page: https://id.getharvest.com/profile
+      Select Developers from the top right side
+    o Go directly to Developer Tools page: https://id.getharvest.com/developers
   o Create a new personal access token
   o You will need the token and the account id.
   o With these two infos, proceed to update appsettings.json
