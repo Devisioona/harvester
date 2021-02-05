@@ -60,7 +60,7 @@ namespace Devisioona.Harvest.CLI.Commands {
 						.Where(e => e.Project.Name.Contains(search, StringComparison.OrdinalIgnoreCase)
 								 || e.Client.Name.Contains(search, StringComparison.OrdinalIgnoreCase)
 								 || e.Task.Name.Contains(search, StringComparison.OrdinalIgnoreCase)
-								 || e.Notes.Contains(search, StringComparison.OrdinalIgnoreCase))
+								 || (e.Notes != null && e.Notes.Contains(search, StringComparison.OrdinalIgnoreCase)))
 						.ToArray();
 				}
 
